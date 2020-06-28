@@ -4,7 +4,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    titleTemplate: '%s - ',
+    titleTemplate: '%s - ' + process.env.npm_package_name,
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
@@ -12,7 +12,7 @@ module.exports = {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/IcePlanet.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
   },
   /*
@@ -45,14 +45,14 @@ module.exports = {
 
   pwa: {
     manifest: {
-      name: 'Nuxt.js PWA my-chatRoom',
+      name: 'Nuxt.js PWA nuxt-chat-app',
       short_name: 'Nuxt.js PWA',
       start_url: '/',
       theme_color: '#4267b2',
       display: 'standalone',
     },
     icon: {
-      iconSrc: './static/IcePlanet.ico',
+      iconSrc: './static/favicon.ico',
     },
   },
   /*

@@ -1,17 +1,19 @@
 <template>
   <v-row justify="center" align="center">
-      <v-card  class="mycard mx-lg-auto mx-auto" max-width="344">
-        <Snackbar
+       <Snackbar
+          class="bar"
           v-model="snackbar"
           :text="message"
         />
+      <v-card  class="mycard mx-lg-auto mx-auto" max-width="344">
+
         <v-img
           height="250"
           src="https://cdn.vuetifyjs.com/images/cards/cooking.png">
         </v-img>
 
        <v-card-title  class="d-flex justify-center align-center">
-          <h2>隨機聊天室</h2>
+          <h2>聊聊星球</h2>
         </v-card-title >
         <v-card-text class="d-flex justify-center">
           <v-form
@@ -98,12 +100,18 @@ export default {
   border-radius:5%;
   background-color:#f7eddc;
   box-shadow:3px 3px 5px 6px;
+  z-index:10000;
+}
+.mycard:hover{
+  opacity: 0.8;
 }
 h2{
   color:#424242
 }
 .field .v-input{
   color:#686363!important;
-
+}
+.bar{
+  opacity: 0.6;
 }
 </style>

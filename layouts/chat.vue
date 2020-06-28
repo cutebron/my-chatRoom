@@ -4,10 +4,10 @@
       v-model="drawer"
       app
       mobile-break-point="650"
-      color="$accent"
-    >
+      color="#eae4da"
+>
       <v-list subheader>
-        <v-subheader>Users in room</v-subheader>
+        <v-subheader>在星球上的外星人👽️</v-subheader>
 
         <v-list-item
           v-for="({ name, id }, index) in users"
@@ -27,12 +27,12 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app color="#424242">
+    <v-app-bar app color="#cec8be">
       <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-toolbar-title>
-        Room
+        👽️👽️👽️
         <v-chip color="grey">
-          聊天室
+          online
         </v-chip>
       </v-toolbar-title>
       <v-spacer />

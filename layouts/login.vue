@@ -12,6 +12,6 @@ export default {
 
 <style scoped>
 .blue{
-  background: #1c3463;
+  background: #1c3463!important;
 }
 </style>

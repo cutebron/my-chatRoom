@@ -69,6 +69,7 @@ import Message from '@/components/Message';
   right: 0;
   padding: 1rem;
   height: 80px;
+  background-color: #fff;
 }
 .chatList {
   position: absolute;
@@ -79,7 +80,8 @@ import Message from '@/components/Message';
   padding: 1rem;
   overflow-y: auto;
   color:white;
-  background-color:rgba(200,220,0,0.3);
+  background-color:rgba(204, 206, 165, 0.2);
+  border-radius: 5px;
 }
 .chat__typing {
   position: absolute;
