@@ -7,12 +7,11 @@
 <script>
 export default {
   name: 'loginLayout',
-
 }
 </script>
 
 <style scoped>
 .blue{
-  background: #4267b2;
+  background: #1c3463;
 }
 </style>

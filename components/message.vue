@@ -1,7 +1,47 @@
 <template>
-
+  <v-form ref="form" @submit.prevent="send">
+    <v-text-field
+      v-model="text"
+      label="輸入訊息..."
+      outlined
+      :rules="rules"
+      append-icon="mdi-send-circle-outline"
+      @input="typing"
+      @click:append="send"
+      @blur="resetValidation"
+    />
+  </v-form>
 </template>
 
-<style>
+<script>
+import { mapActions, mapGetters } from "vuex";
+export default {
+  data: () => ({
+    text: "",
+    rules: [v => !!v || "沒有文字"],
+  }),
+  computed: {
+    ...mapGetters(["typingStatus"]),
+  },
+  methods: {
+    ...mapActions(["createMessage", "setTypingStatus"]),
 
-</style>
+    send() {
+      if (this.$refs.form.validate()) {
+        this.createMessage(this.text);
+        this.text = "";
+        this.setTypingStatus(false);
+        this.resetValidation();
+      }
+    },
+    resetValidation() {
+      this.$refs.form.resetValidation();
+    },
+    typing() {
+      if (!this.typingStatus) {
+        this.setTypingStatus(true);
+      }
+    },
+  },
+};
+</script>

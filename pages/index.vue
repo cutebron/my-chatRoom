@@ -1,6 +1,10 @@
 <template>
   <v-row justify="center" align="center">
       <v-card  class="mycard mx-lg-auto mx-auto" max-width="344">
+        <Snackbar
+          v-model="snackbar"
+          :text="message"
+        />
         <v-img
           height="250"
           src="https://cdn.vuetifyjs.com/images/cards/cooking.png">
@@ -20,7 +24,7 @@
               v-model="user.name"
               :counter="10"
               :rules="nameRules"
-              label="Name"
+              label="請輸入姓名"
               class="field"
               required
             />
@@ -39,22 +43,52 @@
 </template>
 
 <script>
-import LoginWindow from '~/components/LoginWindow.vue'
+import { mapActions } from "vuex";
+import Snackbar from "@/components/Snackbar";
+import messageDict from "@/lib/messageDict";
+
 
 
 export default {
   name: "Home",
   layout: "login",
   components: {
-
+    Snackbar,
   },
   data:()=>({
     isValid: true,
     user: {
       name: "",
+      room:"ROOM",
       typingStatus: false,
     },
-  })
+    nameRules:[
+      v => !!v||"此欄位必填",
+      v =>(v&&v.length<=10)|| "名字必須小於10位元"
+    ],
+    snackbar: false,
+  }),
+  computed: {
+    message() {
+      const { message } = this.$route.query;
+      return messageDict[message] || "";
+    },
+  },
+  mounted() {
+    this.snackbar = !!this.message;
+  },
+  methods:{
+    ...mapActions(["createUser"]),
+    submit(){
+      if(this.$refs.form.validate()){
+        this.createUser(this.user);
+        this.$router.push('ChatRoom');
+      }
+    }
+  },
+   head: {
+    title: "聊聊星球",
+  },
 
 
 }
@@ -63,6 +97,7 @@ export default {
 .mycard{
   border-radius:5%;
   background-color:#f7eddc;
+  box-shadow:3px 3px 5px 6px;
 }
 h2{
   color:#424242

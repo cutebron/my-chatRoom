@@ -1,33 +1,36 @@
-const express = require('express')
-const consola = require('consola')
-const { Nuxt, Builder } = require('nuxt')
-const app = express()
+// 啟用設定nuxt部分
+
+const consola = require('consola');
+const { Nuxt, Builder } = require('nuxt');
+const { app, server } = require('./app');
 
 // Import and Set Nuxt.js options
-const config = require('../nuxt.config.js')
-config.dev = process.env.NODE_ENV !== 'production'
+const config = require('../nuxt.config.js');
+config.dev = process.env.NODE_ENV.trim() !== 'production';
 
-async function start () {
-  // Init Nuxt.js
-  const nuxt = new Nuxt(config)
+async function start() {
+  const nuxt = new Nuxt(config);
 
-  const { host, port } = nuxt.options.server
+  const { host, port } = nuxt.options.server;
 
-  await nuxt.ready()
-  // Build only in dev mode
   if (config.dev) {
-    const builder = new Builder(nuxt)
-    await builder.build()
+    const builder = new Builder(nuxt);
+    await builder.build();
+  } else {
+    await nuxt.ready();
   }
 
-  // Give nuxt middleware to express
-  app.use(nuxt.render)
+  // express取得nuxt的渲染
+  app.use(nuxt.render);
 
-  // Listen the server
-  app.listen(port, host)
-  consola.ready({
-    message: `Server listening on http://${host}:${port}`,
-    badge: true
-  })
+
+  // 告訴server聽取3000這個Port，開啟 Server後會在console中印出訊息
+  server.listen(port, () => {
+    consola.ready({
+      message: `Server listening on http://${host}:${port}`,
+      badge: true,
+    });
+  });
 }
-start()
+
+start();
