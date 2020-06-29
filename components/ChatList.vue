@@ -3,10 +3,7 @@
     justify="center"
     no-gutters
   >
-    <p
-      v-if="isSystemMessage"
-      class="text-center font-italic system"
-    >
+    <p v-if="isSystemMessage" class="text-center font-italic system">
       {{ message.text }}
     </p>
     <v-col
@@ -20,6 +17,9 @@
         :class="{ owner }"
       >
         <v-col>
+          <v-avatar>
+             <img :src="message.photo">
+         </v-avatar>
           <span class="font-weight-bold">{{ message.name }}</span>
           <p class="mb-0">
             {{ message.text }}

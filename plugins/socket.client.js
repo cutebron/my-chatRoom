@@ -14,7 +14,7 @@ const socketInstance = io('/', {
 
 export default ({ store }) => {
   Vue.use(new VueSocketIO({
-    debug: false,
+    debug: true,
     connection: socketInstance,
     vuex: {
       store,

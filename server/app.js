@@ -32,16 +32,16 @@ io.on("connection", (socket) => {
   //監聽client端joinRoom的事件
   socket.on("joinRoom", ({ name, room }) => {
     socket.join(room); // 加入一個room中
-   // 將事件usersDB.getUsersByRoom(room) 回傳給 所有 已加入這個room的client端
+   // 將事件usersDB.getUsersByRoom(room) 發送給 所有 已加入這個room的client端
     io.to(room).emit("updateUsers", usersDB.getUsersByRoom(room));
-    socket.emit("newMessage", new Message("admin", `Hello, ${name}`));
+    socket.emit("newMessage", new Message("admin", `歡迎~${name}`));
 
-    //廣播  ${name} 已經連線聊天室～ 給除了發送者外所有連結著同一個room的其他client端
+    //廣播  ${name} 已經連線聊天室 給 除了發送者外 所有連結著同一個room的其他client端
     socket.broadcast
       .to(room)
       .emit(
         "newMessage",
-        new Message("admin", ` ${name} 已經連線聊天室～`),
+        new Message("admin", ` ${name} 進入星球～`),
       );
   });
 
@@ -49,7 +49,7 @@ io.on("connection", (socket) => {
   socket.on("createMessage", ({ id, msg }) => {
     const user = usersDB.getUser(id);
     if (user) {
-      io.to(user.room).emit("newMessage", new Message(user.name, msg, id));
+      io.to(user.room).emit("newMessage", new Message(user.name, msg, id,user.photo));
     }
   });
 
@@ -72,7 +72,7 @@ io.on("connection", (socket) => {
       io.to(room).emit("updateUsers", usersDB.getUsersByRoom(room));
       io.to(room).emit(
         "newMessage",
-        new Message("admin", `User ${name} left chat`),
+        new Message("admin", ` ${name} 已離開星球~`),
       );
     });
   });

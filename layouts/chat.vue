@@ -1,16 +1,17 @@
+/* eslint-disable vue/require-default-prop */
 <template>
   <v-app style="background: #1c3463;">
     <v-navigation-drawer
       v-model="drawer"
       app
       mobile-break-point="650"
-      color="#eae4da"
->
+      color="rgba(234, 226, 213, 0.5)"
+    >
       <v-list subheader>
         <v-subheader>在星球上的外星人👽️</v-subheader>
 
         <v-list-item
-          v-for="({ name, id }, index) in users"
+          v-for="({ name, id,photo }, index) in users"
           :key="`user-${index}`"
           @click.prevent
         >
@@ -19,9 +20,12 @@
           </v-list-item-content>
 
           <v-list-item-icon>
-            <v-icon :color="id === user.id ? 'primary' : 'grey'">
+            <v-avatar>
+              <img :src="photo">
+            </v-avatar>
+            <!-- <v-icon :color="id === user.id ? 'primary' : 'grey'">
               mdi-account-circle-outline
-            </v-icon>
+            </v-icon> -->
           </v-list-item-icon>
         </v-list-item>
       </v-list>
@@ -31,7 +35,8 @@
       <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-toolbar-title>
         👽️👽️👽️
-        <v-chip color="grey">
+        <v-chip color="green" text-color="white">
+          <v-avatar left class="green darken-4" />
           online
         </v-chip>
       </v-toolbar-title>
@@ -57,25 +62,25 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions } from "vuex";
-export default {
-  name: "chatLayout",
-  data: () => ({
-    drawer: true,
-  }),
-  computed: {
-    ...mapState(["user", "users"]),
-  },
-  middleware: "auth",
-  created() {
-    this.joinRoom(this.user);
-  },
-  methods: {
-    ...mapActions(["joinRoom", "leftRoom"]),
-    exit() {
-      this.leftRoom();
-      this.$router.push("/?message=leftChat");
-    },
-  },
-};
+        import { mapState, mapMutations, mapActions } from "vuex";
+        export default {
+          name: "ChatLayout",
+          data: () => ({
+            drawer: true,
+          }),
+          computed: {
+            ...mapState(["user", "users"]),
+          },
+          middleware: "auth",
+          created() {
+            this.joinRoom(this.user);
+          },
+          methods: {
+            ...mapActions(["joinRoom", "leftRoom"]),
+            exit() {
+              this.leftRoom();
+              this.$router.push("/?message=leftChat");
+            },
+          },
+        };
 </script>

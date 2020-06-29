@@ -61,14 +61,19 @@ export default {
     isValid: true,
     user: {
       name: "",
+      photo:"",
       room:"ROOM",
       typingStatus: false,
     },
     nameRules:[
       v => !!v||"此欄位必填",
-      v =>(v&&v.length<=10)|| "名字必須小於10位元"
+      v =>(v&&v.length<=10)|| "名字必須小於10位元",
     ],
     snackbar: false,
+    UserPhotoList:[
+            'https://cdn.vuetifyjs.com/images/john.jpg',
+            '/catEgineer.jpg',
+            '/kitty.jpg'],
   }),
   computed: {
     message() {
@@ -83,17 +88,20 @@ export default {
     ...mapActions(["createUser"]),
     submit(){
       if(this.$refs.form.validate()){
+        this.user.photo=this.userPhoto();
+        console.log(this.user.photo);
         this.createUser(this.user);
         this.$router.push('ChatRoom');
       }
-    }
+    },
+    userPhoto(){
+       return  this.UserPhotoList[Math.floor(Math.random() * this.UserPhotoList.length)];
+    },
   },
    head: {
     title: "聊聊星球",
   },
-
-
-}
+};
 </script>
 <style scoped>
 .mycard{

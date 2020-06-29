@@ -40,6 +40,9 @@ import Message from '@/components/Message';
     ...mapState(["user", "messages", "users"]),
     ...mapGetters(["typingUsers"]),
   },
+  mounted(){
+    console.log(this.user.photo);
+  },
   watch: {
     messages() {
       setTimeout(() => {
@@ -58,38 +61,38 @@ import Message from '@/components/Message';
 </script>
 
 <style scoped>
-.chat-wrapper {
-  height: 100%;
-  overflow: hidden;
-}
-.chat__form {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem;
-  height: 80px;
-  background-color: #fff;
-}
-.chatList {
-  position: absolute;
-  top: 0;
-  right: 10%;
-  left: 10%;
-  bottom: 80px;
-  padding: 1rem;
-  overflow-y: auto;
-  color:white;
-  background-color:rgba(204, 206, 165, 0.2);
-  border-radius: 5px;
-}
-.chat__typing {
-  position: absolute;
-  display: flex;
-  bottom: 50px;
-}
-.chat__typing-user:not(first-child) {
-  margin-left: 15px;
-}
+      .chat-wrapper {
+        height: 100%;
+        overflow: hidden;
+      }
+      .chat__form {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1rem;
+        height: 80px;
+        background-color: #fff;
+      }
+      .chatList {
+        position: absolute;
+        top: 0;
+        right: 10%;
+        left: 10%;
+        bottom: 80px;
+        padding: 1rem;
+        overflow-y: auto;
+        color:white;
+        background-color:rgba(204, 206, 165, 0.2);
+        border-radius: 5px;
+      }
+      .chat__typing {
+        position: absolute;
+        display: flex;
+        bottom: 50px;
+      }
+      .chat__typing-user:not(first-child) {
+        margin-left: 15px;
+      }
 </style>
 
