@@ -2,6 +2,17 @@
 
 > Enjoy making friends!
 
+Demo(部署至heroku線上版本):
+https://chatroom-planet.herokuapp.com
+
+使用技術：
+Vue
+Vuetify
+Nuxt.js
+
+socket.io
+Express
+
 ## Build Setup
 
 ```bash
