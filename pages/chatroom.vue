@@ -26,7 +26,7 @@
 <script>
 import { mapState, mapGetters } from "vuex";
 import ChatList from "@/components/ChatList";
-import Message from '@/components/Message';
+import Message from '@/components/message';
 
 
  export default {
