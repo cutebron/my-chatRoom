@@ -1,32 +1,21 @@
 <template>
-  <v-row
-    justify="center"
-    no-gutters
-  >
-    <p v-if="isSystemMessage" class="text-center font-italic system">
+  <v-row justify="center" no-gutters>
+    <h1 v-if="isSystemMessage" class="text-center  system">
       {{ message.text }}
-    </p>
-    <v-col
-      v-else
-      class="msg-wrapper"
-    >
-      <v-row
-        no-gutters
-        justify="space-between"
-        class="msg"
-        :class="{ owner }"
-      >
-        <v-col>
-          <v-avatar>
-             <img :src="message.photo">
-         </v-avatar>
-          <span class="font-weight-bold">{{ message.name }}</span>
-          <p class="mb-0">
-            {{ message.text }}
-          </p>
-        </v-col>
+    </h1>
+    <v-col v-else class="msg-wrapper">
+      <v-row no-gutters justify="space-between" class="msg" :class="{ owner }">
         <v-col cols="auto">
-          <span class="msg__date ml-3">{{ message.time }}</span>
+            <v-avatar>
+              <img :src="message.photo">
+          </v-avatar>
+            <span class="name">{{ message.name }}</span>
+        </v-col>
+         <v-col cols="8">
+           <p class="mb-0  msgtext">{{ message.text }}</p>
+         </v-col>
+        <v-col cols="2"  class="timecol">
+          <span class=" sendtime ">{{ message.time }}</span>
         </v-col>
       </v-row>
     </v-col>
@@ -53,12 +42,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .system {
   margin-bottom: 1rem;
   color: #fff;
+  font-family:monospace;
+  background-color:rgba(235, 221, 204, 0.151);
   p {
     margin-bottom: 1rem;
+    font-size:5rem;
   }
+}
+.msgmain{
+  display:inline-block
+}
+.name{
+  font-size:25px;
+  color:rgb(39, 14, 63)
+}
+.msgtext{
+  margin-left:20px;
+  font-family:monospace;
+}
+
+
+.sendtime{
+  flex:1;
+  color:gray;
+  font-family:monospace;
+  height:20px;
+   margin-top:20px;
 }
 .msg-wrapper {
   display: flex;
@@ -80,9 +93,10 @@ export default {
   }
 }
 .owner {
-  background: #fff;
-  color: #000;
+  background: rgba(255, 250, 250, 0.842);
+  color: #000000;
   align-self: flex-end;
+  font-family:monospace;
 }
 @media (max-width: 400px) {
   .msg {
