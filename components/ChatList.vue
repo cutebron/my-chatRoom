@@ -11,11 +11,11 @@
           </v-avatar>
             <span class="name">{{ message.name }}</span>
         </v-col>
-         <v-col cols="8">
+         <v-col cols="7">
            <p class="mb-0  msgtext">{{ message.text }}</p>
          </v-col>
-        <v-col cols="2"  class="timecol">
-          <span class=" sendtime ">{{ message.time }}</span>
+        <v-col cols="auto">
+          <span class="sendtime ">{{ message.time }}</span>
         </v-col>
       </v-row>
     </v-col>
@@ -67,11 +67,8 @@ export default {
 
 
 .sendtime{
-  flex:1;
   color:gray;
   font-family:monospace;
-  height:20px;
-   margin-top:20px;
 }
 .msg-wrapper {
   display: flex;
