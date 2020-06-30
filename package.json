@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "prestart": "next build",
+    "start": "next start -p ${PORT}",
     "generate": "nuxt generate",
     "heroku-postbuild": "npm run build"
   },
