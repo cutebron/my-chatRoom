@@ -3,13 +3,14 @@ import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
 import '@mdi/font/css/materialdesignicons.css';
 import colors from "vuetify/es5/util/colors";
+import '@fortawesome/fontawesome-free/css/all.css' ;// Ensure you are using css-loader
 
 Vue.use(Vuetify);
 
 export default ctx => {
   const vuetify = new Vuetify({
     icons: {
-      iconfont: 'mdi',
+      iconfont: ['mdi','fa'],
     },
     theme: {
       dark: false,

@@ -5,7 +5,7 @@
       label="輸入訊息..."
       outlined
       :rules="rules"
-      append-icon="mdi-send-circle-outline"
+      append-icon="fa fa-rocket"
       @input="typing"
       @click:append="send"
       @blur="resetValidation"
@@ -18,7 +18,9 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
     text: "",
-    rules: [v => !!v || "沒有文字"],
+    rules: [v => !!v || "請輸入一點文字吧!",
+               v =>(v&&v.length<=256)|| "字數已經超過囉~",
+             ],
   }),
   computed: {
     ...mapGetters(["typingStatus"]),
@@ -45,3 +47,7 @@ export default {
   },
 };
 </script>
+<style scoped>
+
+
+</style>
