@@ -23,6 +23,7 @@
     "vuetify": "^2.2.29"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.1",
     "@mdi/font": "^5.2.45",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",

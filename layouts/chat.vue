@@ -32,20 +32,19 @@
     </v-navigation-drawer>
 
     <v-app-bar app color="#cec8be">
-      <v-app-bar-nav-icon @click="drawer = !drawer" />
+      <v-btn icon @click="drawer = !drawer" >
+           <v-icon>fa fa-bars</v-icon>
+      </v-btn>
       <v-toolbar-title>
         👽️👽️👽️
-        <v-chip color="green" text-color="white">
-          <v-avatar left class="green darken-4" />
-          online
-        </v-chip>
       </v-toolbar-title>
       <v-spacer />
-      <v-btn
-        icon
-        class="mx-1"
-        @click="exit"
-      >
+        <v-chip color="green" text-color="white">
+          <!-- <v-avatar left class="green darken-4"  id="status" @click="exit" /> -->
+
+          online
+        </v-chip>
+      <v-btn icon class="mx-1" @click="exit">
         <v-icon>mdi-exit-to-app</v-icon>
       </v-btn>
     </v-app-bar>
@@ -84,3 +83,8 @@
           },
         };
 </script>
+<style scoped>
+  .me{
+    z-index:10000;
+  }
+</style>

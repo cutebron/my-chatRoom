@@ -17,7 +17,7 @@
         {{ typingUser.name }} is typing...
       </p>
     </div>
-    <div class="chat__form">
+    <div class="message">
       <Message />
     </div>
   </div>
@@ -65,14 +65,14 @@ import Message from '@/components/Message';
         height: 100%;
         overflow: hidden;
       }
-      .chat__form {
+      .message {
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
-        padding: 1rem;
-        height: 80px;
-        background-color: #fff;
+        padding: 1rem 3rem 0  3rem;
+        /* height: 80px; */
+        background-color: rgb(194, 248, 177);
       }
       .chatList {
         position: absolute;
